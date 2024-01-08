@@ -5,10 +5,10 @@ FROM python:3.8
 WORKDIR /app
 
 # Copy the requirements.txt file into the container at /app
-COPY backend/requirements.txt /app/
+COPY backend/requirements.txt /app/backend
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Copy the entire project into the container at /app
 COPY . /app
