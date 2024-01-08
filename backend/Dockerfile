@@ -11,7 +11,7 @@ COPY backend/requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy manage.py from argoCD directory to /app
-COPY manage.py /app/
+COPY backend/manage.py /app/
 
 # Copy the entire project (except manage.py) into the container at /app/backend
 COPY backend /app/backend
