@@ -8,7 +8,7 @@ WORKDIR /app
 COPY backend/requirements.txt /app/backend
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r backend/requirements.txt
+RUN pip install --no-cache-dir -r /backend/requirements.txt
 
 # Copy the entire project into the container at /app
 COPY . /app
