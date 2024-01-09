@@ -13,6 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set image tag
+      id: set_tag
+      run: echo "DOCKER_TAG=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
@@ -25,4 +29,16 @@ jobs:
         context: .
         file: ./backend/Dockerfile
         push: true
-        tags: macorov/django_backend_bd_smart_agriculture:latest
+        tags: macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}
+
+    - name: Update Kubernetes deployment file
+      run: |
+        sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" config_file/deployment.yaml
+
+    - name: Commit and push updated deployment file
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add config_file/deployment.yaml
+        git commit -m "Update Docker image tag in deployment file"
+        git push
