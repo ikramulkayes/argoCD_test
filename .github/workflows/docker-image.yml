@@ -38,7 +38,7 @@ jobs:
       run: ls -R configfile
 
     - name: Update Kubernetes deployment file
-      run: sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" configfile/django-deployment.yaml
+      run: sed -i "s|macorov/django_backend_bd_smart_agriculture:[0-9a-f]\+|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" configfile/django-deployment.yaml
 
     - name: Display contents of configfile directory after update
       run: ls -R configfile
