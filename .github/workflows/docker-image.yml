@@ -34,25 +34,19 @@ jobs:
         push: true
         tags: macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}
 
-    - name: Display contents of configfile directory
+    - name: Display contents of configfile directory before update
       run: ls -R configfile
 
-    - name: Change working directory
-      run: cd configfile
-
-    - name: dir 
-      run: ls
-
     - name: Update Kubernetes deployment file
-      run: sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" django-deployment.yaml
+      run: sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" configfile/django-deployment.yaml
 
     - name: Display contents of configfile directory after update
-      run: ls -R
+      run: ls -R configfile
 
     - name: Commit and push updated deployment file
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add django-deployment.yaml
+        git add configfile/django-deployment.yaml
         git commit -m "Update Docker image tag in deployment file"
         git push
