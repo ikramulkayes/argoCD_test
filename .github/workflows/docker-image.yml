@@ -42,7 +42,7 @@ jobs:
 
     - name: Update Kubernetes deployment file
       run: |
-        sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" deployment.yaml
+        sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" django-deployment.yaml
 
     - name: Display contents of configfile directory after update
       run: ls -R
@@ -51,6 +51,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add deployment.yaml
+        git add django-deployment.yaml
         git commit -m "Update Docker image tag in deployment file"
         git push
