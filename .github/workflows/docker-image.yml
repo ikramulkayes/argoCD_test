@@ -40,6 +40,9 @@ jobs:
     - name: Change working directory
       run: cd configfile
 
+    - name: dir 
+      run: ls
+
     - name: Update Kubernetes deployment file
       run: |
         sed -i "s|macorov/django_backend_bd_smart_agriculture:latest|macorov/django_backend_bd_smart_agriculture:${{ env.DOCKER_TAG }}|g" django-deployment.yaml
