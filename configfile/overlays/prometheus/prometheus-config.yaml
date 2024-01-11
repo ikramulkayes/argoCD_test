@@ -33,3 +33,6 @@ data:
       - job_name: 'node-exporter'
         static_configs:
           - targets: ['node-exporter-service:9100']
+      - job_name: 'kube-state-metrics'
+        static_configs:
+          - targets: ['kube-state-metrics:8181']
