@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: django-backend-container
-        image: macorov/django_backend_bd_smart_agriculture:4e7b6cf
+        image: macorov/django_backend_bd_smart_agriculture:27806dd
         ports:
           - containerPort: 8000
