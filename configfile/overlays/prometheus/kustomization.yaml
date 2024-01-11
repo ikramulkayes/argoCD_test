@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
 - prometheus-deployment.yaml
+- prometheus-config.yaml
