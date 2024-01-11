@@ -58,3 +58,6 @@ data:
             regex: __meta_kubernetes_service_label_(.+)
           - target_label: instance
             replacement: $1
+      - job_name: 'cadvisor'
+        static_configs:
+          - targets: ['cadvisor:8181']

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cadvisor
+  namespace: kube-system
+  labels:
+    k8s-app: cadvisor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: cadvisor
+  template:
+    metadata:
+      labels:
+        k8s-app: cadvisor
+    spec:
+      containers:
+      - name: cadvisor
+        image: k8s.gcr.io/cadvisor:latest
+        ports:
+        - containerPort: 8181
