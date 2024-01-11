@@ -4,8 +4,6 @@ kind: Kustomization
 resources:
 - django-deployment.yaml
 - django-service.yaml
-- dev-test-role
-- dev-test-role-binding
 # Add overlays for Prometheus and Grafana
 - overlays/prometheus
 - overlays/grafana
