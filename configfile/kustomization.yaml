@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
 - django-deployment.yaml
 - django-service.yaml
+# Add overlays for Prometheus and Grafana
+- overlays/prometheus
+- overlays/grafana
