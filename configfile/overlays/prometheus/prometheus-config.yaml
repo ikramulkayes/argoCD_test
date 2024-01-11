@@ -60,4 +60,4 @@ data:
             replacement: $1
       - job_name: 'cadvisor'
         static_configs:
-          - targets: 'localhost:8181'
+          - targets: '['cadvisor:8181']'
