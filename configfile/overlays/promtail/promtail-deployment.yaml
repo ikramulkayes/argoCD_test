@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: promtail
+  namespace: kube-system
+  labels:
+    app: promtail
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: promtail
+  template:
+    metadata:
+      labels:
+        app: promtail
+    spec:
+      containers:
+      - name: promtail
+        image: grafana/promtail:latest
+        args:
+        - -config.file=/etc/promtail/promtail-config.yaml
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/promtail
+        - name: var-lib-loki
+          mountPath: /var/lib/loki
+      volumes:
+      - name: config-volume
+        configMap:
+          name: promtail-config
+      - name: var-lib-loki
+        emptyDir: {}
