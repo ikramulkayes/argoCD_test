@@ -20,22 +20,3 @@ spec:
             value: root
         ports:
           - containerPort: 3306
----
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: mysql-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: mysql-deployment
-  minReplicas: 1
-  maxReplicas: 5  # Set the maximum number of replicas based on your requirements
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50  # Adjust the target CPU utilization percentage
