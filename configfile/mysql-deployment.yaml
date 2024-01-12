@@ -20,3 +20,6 @@ spec:
             value: root
         ports:
           - containerPort: 3306
+        resources:
+          requests:
+            cpu: "100m" # Set the appropriate CPU request for your application
