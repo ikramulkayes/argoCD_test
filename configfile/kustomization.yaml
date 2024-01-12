@@ -8,6 +8,7 @@ resources:
 - phpmyadmin-service.yaml
 - django-deployment.yaml
 - django-service.yaml
+- mysql-hpa.yaml
 # Add overlays for Prometheus and Grafana
 - overlays/prometheus
 - overlays/grafana
