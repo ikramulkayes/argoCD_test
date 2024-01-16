@@ -17,3 +17,10 @@ spec:
         image: macorov/django_backend_bd_smart_agriculture:b34ea65
         ports:
           - containerPort: 8000
+        resources:
+          limits:
+            cpu: "50m"   # 0.05 CPU cores
+            memory: "64Mi"  # 64 megabytes
+          requests:
+            cpu: "25m"   # 0.025 CPU cores
+            memory: "32Mi"  # 32 megabytes

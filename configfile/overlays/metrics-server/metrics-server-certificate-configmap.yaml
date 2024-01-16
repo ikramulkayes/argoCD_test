@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metrics-server-certificate-configmap
+  namespace: kube-system
+data:
+  kubelet.crt: |
+    -----BEGIN CERTIFICATE-----
+    <PEM-encoded-certificate-with-SANs>
+    -----END CERTIFICATE-----
+  kubelet.key: |
+    -----BEGIN PRIVATE KEY-----
+    <PEM-encoded-private-key>
+    -----END PRIVATE KEY-----

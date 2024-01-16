@@ -21,6 +21,13 @@ spec:
         - name: prometheus-config
           mountPath: /etc/prometheus/prometheus.yml
           subPath: prometheus.yml
+        resources:
+          limits:
+            cpu: "50m"   # 0.05 CPU cores
+            memory: "64Mi"  # 64 megabytes
+          requests:
+            cpu: "25m"   # 0.025 CPU cores
+            memory: "32Mi"  # 32 megabytes
       volumes:
       - name: prometheus-config
         configMap:
